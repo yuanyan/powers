@@ -124,7 +124,6 @@ module.exports = modalFactory({
             margin: 0,
             animationDuration: (willHidden ? hideAnimation : showAnimation).animationDuration,
             animationFillMode: 'forwards',
-            animationDelay: '0.25s',
             animationName: showContentAnimation,
             animationTimingFunction: (willHidden ? hideAnimation : showAnimation).animationTimingFunction
         })
