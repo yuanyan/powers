@@ -39,6 +39,12 @@ module.exports = function(animation){
             return this.state.hidden;
         },
 
+        handleBackdropClick: function() {
+            if(this.props.closeOnClick) {
+                this.hide();
+            }
+        },
+
         componentDidMount: function(){
             var ref = this.props.animation.getRef();
             var node = this.refs[ref].getDOMNode();
@@ -65,7 +71,7 @@ module.exports = function(animation){
             var contentStyle = animation.getContentStyle(willHidden);
             var ref = animation.getRef(willHidden);
             var sharp = animation.getSharp && animation.getSharp(willHidden);
-            var backdrop = this.props.backdrop? <div onClick={this.hide} style={backdropStyle}/>: undefined;
+            var backdrop = this.props.backdrop? <div onClick={this.handleBackdropClick} style={backdropStyle}/>: undefined;
 
             if(willHidden) {
                 var node = this.refs[ref].getDOMNode();
