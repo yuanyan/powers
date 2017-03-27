@@ -1,6 +1,7 @@
 var React = require('react');
-var transitionEvents = require('domkit/transitionEvents');
-var appendVendorPrefix = require('domkit/appendVendorPrefix');
+var canUseDOM = require('./canUseDOM');
+var transitionEvents = canUseDOM ? require('domkit/transitionEvents') : function() {};
+var appendVendorPrefix = canUseDOM ? require('domkit/appendVendorPrefix') : function() {};
 
 module.exports = function(animation){
 
