@@ -241,8 +241,10 @@ module.exports = {
 
 },{}],8:[function(require,module,exports){
 var modalFactory = require('./modalFactory');
-var insertKeyframesRule = require('domkit/insertKeyframesRule');
-var appendVendorPrefix = require('domkit/appendVendorPrefix');
+var canUseDOM = require('./canUseDOM');
+var insertKeyframesRule =  canUseDOM ? require('domkit/insertKeyframesRule') : function() {};
+var appendVendorPrefix = canUseDOM ? require('domkit/appendVendorPrefix') : function() {};
+
 
 var animation = {
     show: {
@@ -258,22 +260,22 @@ var animation = {
     showModalAnimation: insertKeyframesRule({
         '0%': {
             opacity: 0,
-            transform: 'translate3d(-50%, -300px, 0)'
+            transform: 'translate(-50%, -300px)'
         },
         '100%': {
             opacity: 1,
-            transform: 'translate3d(-50%, -50%, 0)'
+            transform: 'translate(-50%, -50%)'
         }
     }),
 
     hideModalAnimation: insertKeyframesRule({
         '0%': {
             opacity: 1,
-            transform: 'translate3d(-50%, -50%, 0)'
+            transform: 'translate(-50%, -50%)'
         },
         '100%': {
             opacity: 0,
-            transform: 'translate3d(-50%, 100px, 0)'
+            transform: 'translate(-50%, 100px)'
         }
     }),
 
@@ -298,22 +300,22 @@ var animation = {
     showContentAnimation: insertKeyframesRule({
         '0%': {
             opacity: 0,
-            transform: 'translate3d(0, -20px, 0)'
+            transform: 'translate(0, -20px)'
         },
         '100%': {
             opacity: 1,
-            transform: 'translate3d(0, 0, 0)'
+            transform: 'translate(0, 0)'
         }
     }),
 
     hideContentAnimation: insertKeyframesRule({
         '0%': {
             opacity: 1,
-            transform: 'translate3d(0, 0, 0)'
+            transform: 'translate(0, 0)'
         },
         '100%': {
             opacity: 0,
-            transform: 'translate3d(0, 50px, 0)'
+            transform: 'translate(0, 50px)'
         }
     })
 };
@@ -335,7 +337,7 @@ module.exports = modalFactory({
         return appendVendorPrefix({
             position: "fixed",
             width: "500px",
-            transform: "translate3d(-50%, -50%, 0)",
+            transform: "translate(-50%, -50%)",
             top: "50%",
             left: "50%",
             backgroundColor: "white",
@@ -374,10 +376,11 @@ module.exports = modalFactory({
     }
 });
 
-},{"./modalFactory":14,"domkit/appendVendorPrefix":1,"domkit/insertKeyframesRule":5}],9:[function(require,module,exports){
+},{"./canUseDOM":14,"./modalFactory":15,"domkit/appendVendorPrefix":1,"domkit/insertKeyframesRule":5}],9:[function(require,module,exports){
 var modalFactory = require('./modalFactory');
-var insertKeyframesRule = require('domkit/insertKeyframesRule');
-var appendVendorPrefix = require('domkit/appendVendorPrefix');
+var canUseDOM = require('./canUseDOM');
+var insertKeyframesRule = canUseDOM ? require('domkit/insertKeyframesRule') : function() {};
+var appendVendorPrefix = canUseDOM ? require('domkit/appendVendorPrefix') : function() {};
 
 var animation = {
     show: {
@@ -473,10 +476,11 @@ module.exports = modalFactory({
     }
 });
 
-},{"./modalFactory":14,"domkit/appendVendorPrefix":1,"domkit/insertKeyframesRule":5}],10:[function(require,module,exports){
+},{"./canUseDOM":14,"./modalFactory":15,"domkit/appendVendorPrefix":1,"domkit/insertKeyframesRule":5}],10:[function(require,module,exports){
 var modalFactory = require('./modalFactory');
-var insertKeyframesRule = require('domkit/insertKeyframesRule');
-var appendVendorPrefix = require('domkit/appendVendorPrefix');
+var canUseDOM = require('./canUseDOM');
+var insertKeyframesRule = canUseDOM ? require('domkit/insertKeyframesRule') : function() {};
+var appendVendorPrefix = canUseDOM ? require('domkit/appendVendorPrefix') : function() {};
 
 var animation = {
     show: {
@@ -488,7 +492,6 @@ var animation = {
         animationTimingFunction: 'ease-out'
     },
     showContentAnimation: insertKeyframesRule({
-
         '0%': {
             opacity: 0,
             transform: 'translate3d(calc(-100vw - 50%), 0, 0)'
@@ -504,7 +507,6 @@ var animation = {
     }),
 
     hideContentAnimation: insertKeyframesRule({
-
         '0%': {
             opacity: 1,
             transform: 'translate3d(0, 0, 0)'
@@ -589,11 +591,12 @@ module.exports = modalFactory({
     }
 });
 
-},{"./modalFactory":14,"domkit/appendVendorPrefix":1,"domkit/insertKeyframesRule":5}],11:[function(require,module,exports){
+},{"./canUseDOM":14,"./modalFactory":15,"domkit/appendVendorPrefix":1,"domkit/insertKeyframesRule":5}],11:[function(require,module,exports){
 var React = require('react');
 var modalFactory = require('./modalFactory');
-var insertKeyframesRule = require('domkit/insertKeyframesRule');
-var appendVendorPrefix = require('domkit/appendVendorPrefix');
+var canUseDOM = require('./canUseDOM');
+var insertKeyframesRule = canUseDOM ? require('domkit/insertKeyframesRule') : function() {};
+var appendVendorPrefix = canUseDOM ? require('domkit/appendVendorPrefix') : function() {};
 
 var animation = {
     show: {
@@ -737,10 +740,11 @@ module.exports = modalFactory({
     }
 });
 
-},{"./modalFactory":14,"domkit/appendVendorPrefix":1,"domkit/insertKeyframesRule":5,"react":undefined}],12:[function(require,module,exports){
+},{"./canUseDOM":14,"./modalFactory":15,"domkit/appendVendorPrefix":1,"domkit/insertKeyframesRule":5,"react":undefined}],12:[function(require,module,exports){
 var modalFactory = require('./modalFactory');
-var insertKeyframesRule = require('domkit/insertKeyframesRule');
-var appendVendorPrefix = require('domkit/appendVendorPrefix');
+var canUseDOM = require('./canUseDOM');
+var insertKeyframesRule = canUseDOM ? require('domkit/insertKeyframesRule') : function() {};
+var appendVendorPrefix = canUseDOM ? require('domkit/appendVendorPrefix') : function() {};
 
 var animation = {
     show: {
@@ -839,10 +843,11 @@ module.exports = modalFactory({
     }
 });
 
-},{"./modalFactory":14,"domkit/appendVendorPrefix":1,"domkit/insertKeyframesRule":5}],13:[function(require,module,exports){
+},{"./canUseDOM":14,"./modalFactory":15,"domkit/appendVendorPrefix":1,"domkit/insertKeyframesRule":5}],13:[function(require,module,exports){
 var modalFactory = require('./modalFactory');
-var insertKeyframesRule = require('domkit/insertKeyframesRule');
-var appendVendorPrefix = require('domkit/appendVendorPrefix');
+var canUseDOM = require('./canUseDOM');
+var insertKeyframesRule = canUseDOM ? require('domkit/insertKeyframesRule') : function() {};
+var appendVendorPrefix = canUseDOM ? require('domkit/appendVendorPrefix') : function() {};
 
 var animation = {
     show: {
@@ -1083,10 +1088,18 @@ module.exports = modalFactory({
     }
 });
 
-},{"./modalFactory":14,"domkit/appendVendorPrefix":1,"domkit/insertKeyframesRule":5}],14:[function(require,module,exports){
+},{"./canUseDOM":14,"./modalFactory":15,"domkit/appendVendorPrefix":1,"domkit/insertKeyframesRule":5}],14:[function(require,module,exports){
+const canUseDOM = !!(
+  typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
+);
+module.exports = canUseDOM;
+},{}],15:[function(require,module,exports){
 var React = require('react');
-var transitionEvents = require('domkit/transitionEvents');
-var appendVendorPrefix = require('domkit/appendVendorPrefix');
+var canUseDOM = require('./canUseDOM');
+var transitionEvents = canUseDOM ? require('domkit/transitionEvents') : function() {};
+var appendVendorPrefix = canUseDOM ? require('domkit/appendVendorPrefix') : function() {};
 
 module.exports = function(animation){
 
@@ -1124,7 +1137,7 @@ module.exports = function(animation){
             return {
                 willHidden: false,
                 hidden: true
-            }
+            };
         },
 
         hasHidden: function(){
@@ -1146,7 +1159,7 @@ module.exports = function(animation){
 
         handleBackdropClick: function() {
             if (this.props.closeOnClick) {
-                this.hide();
+                this.hide("backdrop");
             }
         },
 
@@ -1208,7 +1221,7 @@ module.exports = function(animation){
             this.setState({
                 hidden: true
             });
-            this.props.onHide();
+            this.props.onHide(this.state.hideSource);
         },
 
         enter: function(){
@@ -1230,10 +1243,15 @@ module.exports = function(animation){
             }.bind(this), 0);
         },
 
-        hide: function(){
+        hide: function(source){
             if (this.hasHidden()) return;
 
+            if (!source) {
+                source = "hide";
+            }
+
             this.setState({
+                hideSource: source,
                 willHidden: true
             });
         },
@@ -1242,14 +1260,20 @@ module.exports = function(animation){
             if (this.hasHidden())
                 this.show();
             else
-                this.hide();
+                this.hide("toggle");
         },
 
         listenKeyboard: function(event) {
+            (typeof(this.props.keyboard)=="function")
+                ?this.props.keyboard(event)
+                :this.closeOnEsc(event);
+        },
+
+        closeOnEsc: function(event){
             if (this.props.keyboard &&
                     (event.key === "Escape" ||
                      event.keyCode === 27)) {
-                this.hide();
+                this.hide("keyboard");
             }
         },
 
@@ -1261,9 +1285,9 @@ module.exports = function(animation){
             window.removeEventListener("keydown", this.listenKeyboard, true);
         }
     });
-}
+};
 
-},{"domkit/appendVendorPrefix":1,"domkit/transitionEvents":7,"react":undefined}],"boron":[function(require,module,exports){
+},{"./canUseDOM":14,"domkit/appendVendorPrefix":1,"domkit/transitionEvents":7,"react":undefined}],"boron":[function(require,module,exports){
 module.exports = {
     DropModal: require('./DropModal'),
     WaveModal: require('./WaveModal'),
