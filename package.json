@@ -1,6 +1,6 @@
 {
   "name": "boron",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "A collection of dialog animations with React.js",
   "main": "Boron.js",
   "author": "Yuanyan Cao",
