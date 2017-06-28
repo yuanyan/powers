@@ -1,4 +1,4 @@
-Boron  [![npm version](https://badge.fury.io/js/boron.svg)](http://badge.fury.io/js/boron)
+Beryllium  [![npm version](https://badge.fury.io/js/boron.svg)](http://badge.fury.io/js/boron)
 =====
 
 # This is a fork of http://yuanyan.github.io/boron/ that has fixes for the deprecation warnings in React 15.*. I will be working on updating this package to use es6 as well as fixing some of the issues in the main package. PRs welcome!
