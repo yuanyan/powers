@@ -13,7 +13,8 @@
     "domkit": "^0.0.1"
   },
   "peerDependencies": {
-    "react": ">=0.14.0"
+    "react": ">=0.14.0",
+    "prop-types":">=15.0"
   },
   "devDependencies": {
     "react-dom": ">=0.14.0",
