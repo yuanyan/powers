@@ -1,9 +1,9 @@
 {
-  "name": "boron",
+  "name": "beryllium",
   "version": "0.3.0",
   "description": "A collection of dialog animations with React.js",
   "main": "Boron.js",
-  "author": "Yuanyan Cao",
+  "author": "Jeremy Ayerst",
   "license": "MIT",
   "repository": {
     "type": "git",
