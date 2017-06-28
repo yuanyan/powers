@@ -1,3 +1,5 @@
+'use strict';
+
 var modalFactory = require('./modalFactory');
 var insertKeyframesRule = require('domkit/insertKeyframesRule');
 var appendVendorPrefix = require('domkit/appendVendorPrefix');
@@ -86,10 +88,10 @@ var showContentAnimation = animation.showContentAnimation;
 var hideContentAnimation = animation.hideContentAnimation;
 
 module.exports = modalFactory({
-    getRef: function(willHidden) {
+    getRef: function getRef(willHidden) {
         return 'modal';
     },
-    getModalStyle: function(willHidden) {
+    getModalStyle: function getModalStyle(willHidden) {
         return appendVendorPrefix({
             position: "fixed",
             width: "500px",
@@ -102,9 +104,9 @@ module.exports = modalFactory({
             animationFillMode: 'forwards',
             animationName: willHidden ? hideModalAnimation : showModalAnimation,
             animationTimingFunction: (willHidden ? hideAnimation : showAnimation).animationTimingFunction
-        })
+        });
     },
-    getBackdropStyle: function(willHidden) {
+    getBackdropStyle: function getBackdropStyle(willHidden) {
         return appendVendorPrefix({
             position: "fixed",
             top: 0,
@@ -119,7 +121,7 @@ module.exports = modalFactory({
             animationTimingFunction: (willHidden ? hideAnimation : showAnimation).animationTimingFunction
         });
     },
-    getContentStyle: function(willHidden) {
+    getContentStyle: function getContentStyle(willHidden) {
         return appendVendorPrefix({
             margin: 0,
             opacity: 0,
@@ -128,6 +130,6 @@ module.exports = modalFactory({
             animationDelay: '0.25s',
             animationName: showContentAnimation,
             animationTimingFunction: (willHidden ? hideAnimation : showAnimation).animationTimingFunction
-        })
+        });
     }
 });

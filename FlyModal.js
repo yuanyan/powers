@@ -1,3 +1,5 @@
+'use strict';
+
 var modalFactory = require('./modalFactory');
 var insertKeyframesRule = require('domkit/insertKeyframesRule');
 var appendVendorPrefix = require('domkit/appendVendorPrefix');
@@ -38,7 +40,7 @@ var animation = {
         '100%': {
             opacity: 0,
             transform: 'translate3d(calc(100vw + 50%), 0, 0)'
-        },
+        }
     }),
 
     showBackdropAnimation: insertKeyframesRule({
@@ -47,7 +49,7 @@ var animation = {
         },
         '100%': {
             opacity: 0.9
-        },
+        }
     }),
 
     hideBackdropAnimation: insertKeyframesRule({
@@ -71,10 +73,10 @@ var showBackdropAnimation = animation.showBackdropAnimation;
 var hideBackdropAnimation = animation.hideBackdropAnimation;
 
 module.exports = modalFactory({
-    getRef: function(willHidden) {
+    getRef: function getRef(willHidden) {
         return 'content';
     },
-    getModalStyle: function(willHidden) {
+    getModalStyle: function getModalStyle(willHidden) {
         return appendVendorPrefix({
             zIndex: 1050,
             position: "fixed",
@@ -82,9 +84,9 @@ module.exports = modalFactory({
             transform: "translate3d(-50%, -50%, 0)",
             top: "50%",
             left: "50%"
-        })
+        });
     },
-    getBackdropStyle: function(willHidden) {
+    getBackdropStyle: function getBackdropStyle(willHidden) {
         return appendVendorPrefix({
             position: "fixed",
             top: 0,
@@ -99,7 +101,7 @@ module.exports = modalFactory({
             animationTimingFunction: (willHidden ? hideAnimation : showAnimation).animationTimingFunction
         });
     },
-    getContentStyle: function(willHidden) {
+    getContentStyle: function getContentStyle(willHidden) {
         return appendVendorPrefix({
             margin: 0,
             backgroundColor: "white",
@@ -107,6 +109,6 @@ module.exports = modalFactory({
             animationFillMode: 'forwards',
             animationName: willHidden ? hideContentAnimation : showContentAnimation,
             animationTimingFunction: (willHidden ? hideAnimation : showAnimation).animationTimingFunction
-        })
+        });
     }
 });
