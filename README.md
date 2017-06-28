@@ -1,12 +1,12 @@
 Boron  [![npm version](https://badge.fury.io/js/boron.svg)](http://badge.fury.io/js/boron)
 =====
 
-[![Pair on this](https://tf-assets-staging.s3.amazonaws.com/badges/thinkful_repo_badge.svg)](http://start.thinkful.com/react/?utm_source=github&utm_medium=badge&utm_campaign=boron)
+# This is a fork of http://yuanyan.github.io/boron/ that has fixes for the deprecation warnings in React 15.*. I will be working on updating this package to use es6 as well as fixing some of the issues in the main package. PRs welcome!
+
 
 A collection of dialog animations with React.js.
 
-* React 0.14+ Use `boron 0.2`
-* React 0.12+ Use `boron 0.1`
+* React 0.15+ Use `boron 0.3`
 
 ## Demo & Examples
 

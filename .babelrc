@@ -1,0 +1,14 @@
+{
+	"presets": [
+		"es2015",
+		"react"
+	],
+	"plugins": ["transform-object-rest-spread", "babel-plugin-transform-runtime"],
+	"env": {
+		"start": {
+			"presets": [
+				"react-hmre"
+			]
+		}
+	}
+}
