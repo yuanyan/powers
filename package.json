@@ -1,13 +1,13 @@
 {
-  "name": "beryllium",
-  "version": "0.3.0",
+  "name": "reboron",
+  "version": "0.3.2",
   "description": "A collection of dialog animations with React.js",
   "main": "Boron.js",
   "author": "Jeremy Ayerst",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jerairrest/boron.git"
+    "url": "https://github.com/jerairrest/reboron.git"
   },
   "dependencies": {
     "domkit": "^0.0.1"
