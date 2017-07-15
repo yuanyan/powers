@@ -46,57 +46,57 @@ export default (animation) => {
     };
 
     render() {
-        const hidden = this.hasHidden();
-        if (hidden) return null;
+      const hidden = this.hasHidden();
+      if (hidden) return null;
 
-        const willHidden = this.state.willHidden;
-        const animation = this.props.animation;
-        const modalStyle = animation.getModalStyle(willHidden);
-        const backdropStyle = animation.getBackdropStyle(willHidden);
-        const contentStyle = animation.getContentStyle(willHidden);
-        const ref = animation.getRef(willHidden);
-        const sharp = animation.getSharp && animation.getSharp(willHidden);
+      const willHidden = this.state.willHidden;
+      const animation = this.props.animation;
+      const modalStyle = animation.getModalStyle(willHidden);
+      const backdropStyle = animation.getBackdropStyle(willHidden);
+      const contentStyle = animation.getContentStyle(willHidden);
+      const ref = animation.getRef(willHidden);
+      const sharp = animation.getSharp && animation.getSharp(willHidden);
 
-        // Apply custom style properties
-        if (this.props.modalStyle) {
-          const prefixedModalStyle = appendVendorPrefix(this.props.modalStyle);
-          for (let style in prefixedModalStyle) {
-            modalStyle[style] = prefixedModalStyle[style];
-          }
+      // Apply custom style properties
+      if (this.props.modalStyle) {
+        const prefixedModalStyle = appendVendorPrefix(this.props.modalStyle);
+        for (let style in prefixedModalStyle) {
+          modalStyle[style] = prefixedModalStyle[style];
         }
+      }
 
-        if (this.props.backdropStyle) {
-          const prefixedBackdropStyle = appendVendorPrefix(this.props.backdropStyle);
-          for (let style in prefixedBackdropStyle) {
-            backdropStyle[style] = prefixedBackdropStyle[style];
-          }
+      if (this.props.backdropStyle) {
+        const prefixedBackdropStyle = appendVendorPrefix(this.props.backdropStyle);
+        for (let style in prefixedBackdropStyle) {
+          backdropStyle[style] = prefixedBackdropStyle[style];
         }
+      }
 
-        if (this.props.contentStyle) {
-          const prefixedContentStyle = appendVendorPrefix(this.props.contentStyle);
-          for (let style in prefixedContentStyle) {
-            contentStyle[style] = prefixedContentStyle[style];
-          }
+      if (this.props.contentStyle) {
+        const prefixedContentStyle = appendVendorPrefix(this.props.contentStyle);
+        for (let style in prefixedContentStyle) {
+          contentStyle[style] = prefixedContentStyle[style];
         }
+      }
 
-        const backdrop = this.props.backdrop ? React.createElement('div', {style: backdropStyle, onClick: this.props.closeOnClick ? this.handleBackdropClick : null}) : undefined;
+      const backdrop = this.props.backdrop ? React.createElement('div', {style: backdropStyle, onClick: this.props.closeOnClick ? this.handleBackdropClick : null}) : undefined;
 
-        if (willHidden) {
-          const node = this.refs[ref];
-          this.addTransitionListener(node, this.leave);
-        }
+      if (willHidden) {
+        const node = this.refs[ref];
+        this.addTransitionListener(node, this.leave);
+      }
 
-        return (
-          React.createElement('span', null,
-            React.createElement('div', {ref: 'modal', style: modalStyle, className: this.props.className},
-                sharp,
-                React.createElement('div', {ref: 'content', tabIndex: '-1', style: contentStyle},
-                    this.props.children
-                )
-            ),
-            backdrop
-          )
-        );
+      return (
+        React.createElement('span', null,
+          React.createElement('div', {ref: 'modal', style: modalStyle, className: this.props.className},
+              sharp,
+              React.createElement('div', {ref: 'content', tabIndex: '-1', style: contentStyle},
+                  this.props.children
+              )
+          ),
+          backdrop
+        )
+      );
     };
 
     leave() {

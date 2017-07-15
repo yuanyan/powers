@@ -82,11 +82,11 @@ The values for the CSS properties will either add new properties or override the
 Modal with 80% width:
 ``` javascript
 import React, { Component } from 'react';
-import ScaleModal from 'reboron/ScaleModal';
+import Modal from 'reboron/ScaleModal';
 
 // Style object
 const modalStyle = {
-  width: '80%'
+  width: '80%',
 };
 
 class Example extends Component {
@@ -118,7 +118,7 @@ Red backdrop with a blue modal, rotated at 45 degrees:
 
 ``` javascript
 import React, { Component } from 'react';
-import FlyModal from 'reboron/FlyModal';
+import Modal from 'reboron/FlyModal';
 
 // Individual styles for the modal, modal content, and backdrop
 const modalStyle = {
@@ -126,12 +126,12 @@ const modalStyle = {
 };
 
 const backdropStyle = {
-  backgroundColor: 'red'
+  backgroundColor: 'red',
 };
 
 const contentStyle = {
   backgroundColor: 'blue',
-  height: '100%'
+  height: '100%',
 };
 
 class Example extends Component {
