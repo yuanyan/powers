@@ -129,14 +129,14 @@ exports.default = function (animation) {
           }
         }
 
-        var backdrop = this.props.backdrop ? _react2.default.createElement("div", { style: backdropStyle, onClick: this.props.closeOnClick ? this.handleBackdropClick : null }) : undefined;
+        var backdrop = this.props.backdrop ? _react2.default.createElement('div', { style: backdropStyle, onClick: this.props.closeOnClick ? this.handleBackdropClick : null }) : undefined;
 
         if (willHidden) {
           var node = this.refs[ref];
           this.addTransitionListener(node, this.leave);
         }
 
-        return _react2.default.createElement("span", null, _react2.default.createElement("div", { ref: "modal", style: modalStyle, className: this.props.className }, sharp, _react2.default.createElement("div", { ref: "content", tabIndex: "-1", style: contentStyle }, this.props.children)), backdrop);
+        return _react2.default.createElement('span', null, _react2.default.createElement('div', { ref: 'modal', style: modalStyle, className: this.props.className }, sharp, _react2.default.createElement('div', { ref: 'content', tabIndex: '-1', style: contentStyle }, this.props.children)), backdrop);
       }
     }, {
       key: 'leave',
@@ -188,19 +188,19 @@ exports.default = function (animation) {
     }, {
       key: 'listenKeyboard',
       value: function listenKeyboard(event) {
-        if (this.props.keyboard && (event.key === "Escape" || event.keyCode === 27)) {
+        if (this.props.keyboard && (event.key === 'Escape' || event.keyCode === 27)) {
           this.hide();
         }
       }
     }, {
       key: 'componentDidMount',
       value: function componentDidMount() {
-        window.addEventListener("keydown", this.listenKeyboard, true);
+        window.addEventListener('keydown', this.listenKeyboard, true);
       }
     }, {
       key: 'componentWillUnmount',
       value: function componentWillUnmount() {
-        window.removeEventListener("keydown", this.listenKeyboard, true);
+        window.removeEventListener('keydown', this.listenKeyboard, true);
       }
     }]);
     return Factory;
@@ -222,7 +222,7 @@ exports.default = function (animation) {
   };
 
   Factory.defaultProps = {
-    className: "",
+    className: '',
     onShow: function onShow() {},
     onHide: function onHide() {},
     animation: animation,
