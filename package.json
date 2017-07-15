@@ -10,8 +10,7 @@
     "url": "https://github.com/jerairrest/reboron.git"
   },
   "scripts": {
-    "build": "npm run boron & npm run drop & npm run fade & npm run fly & npm run factory & npm run outline & npm run scale & npm run wave",
-    "boron": "babel src/Boron.js --out-file Boron.js",
+    "build": "npm run drop & npm run fade & npm run fly & npm run factory & npm run outline & npm run scale & npm run wave",
     "drop": "babel src/DropModal.js --out-file DropModal.js",
     "fade": "babel src/FadeModal.js --out-file FadeModal.js",
     "fly": "babel src/FlyModal.js --out-file FlyModal.js",
