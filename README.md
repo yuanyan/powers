@@ -1,66 +1,60 @@
 Reboron
 =====
-
-# This is a fork of http://yuanyan.github.io/boron/ that has fixes for the deprecation warnings in React 15.*. I will be working on updating this package to use es6 as well as fixing some of the issues in the main package. PRs welcome!
-
-
 A collection of dialog animations with React.js.
 
 * React 0.15+ Use `boron 0.3`
 
-## Demo & Examples
+## About
+This is a fork of http://yuanyan.github.io/boron/ that has fixes for the deprecation warnings in React 15.*. I will be working on updating this package to use es6 as well as fixing some of the issues in the main package. PRs welcome!
 
-Live demo: [yuanyan.github.io/boron](http://yuanyan.github.io/boron/)
-
-To build the examples locally, run:
-
-```
-npm install
-```
-
-Then open [`localhost:9999`](http://localhost:9999) in a browser.
+## Demo
+[yuanyan.github.io/boron](http://yuanyan.github.io/boron/)
 
 ## Installation
-
 The easiest way to use `reboron` is to install it from NPM and include it in your own React build process
-
-
 ```
 npm install reboron --save
 ```
 
 ## Usage
-
 ``` javascript
-var Modal = require('reboron/DropModal');
-var Example = React.createClass({
-    showModal: function(){
-        this.refs.modal.show();
-    },
-    hideModal: function(){
-        this.refs.modal.hide();
-    },
+import React, { Component } from 'react';
+import Modal from 'reboron/DropModal';
 
-    callback: function(event){
-        console.log(event);
-    },
+class Example extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-    render: function() {
-        return (
-            <div>
-                <button onClick={this.showModal}>Open</button>
-                <Modal ref="modal" keyboard={this.callback}>
-                    <h2>I am a dialog</h2>
-                    <button onClick={this.hideModal}>Close</button>
-                </Modal>
-            </div>
-        );
-    }
-});
+  showModal() {
+    this.refs.modal.show();
+  }
+
+  hideModal() {
+    this.refs.modal.hide();
+  }
+
+  callback(evt) {
+    console.log(evt);
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={ this.showModal }>Open</button>
+        <Modal ref={ 'modal' } keyboard={ this.callback }>
+          <h2>I am a dialog</h2>
+          <button onClick={ this.hideModal }>Close</button>
+        </Modal>
+      </div>
+    );
+  }
+}
+
+export default Example;
 ```
 
 ## Props
-
 * className - Add custom class name.
 * keyboard - Receive a callback function or a boolean to choose to close the modal when escape key is pressed.
 * backdrop - Includes a backdrop element.
@@ -87,76 +81,85 @@ The values for the CSS properties will either add new properties or override the
 
 Modal with 80% width:
 ``` javascript
-var Modal = require('reboron/ScaleModal');
+import React, { Component } from 'react';
+import ScaleModal from 'reboron/ScaleModal';
 
 // Style object
-var modalStyle = {
-    width: '80%'
+const modalStyle = {
+  width: '80%'
 };
 
-var Example = React.createClass({
-    showModal: function(){
-        this.refs.modal.show();
-    },
-    hideModal: function(){
-        this.refs.modal.hide();
-    },
-    render: function() {
-        return (
-            <div>
-                <button onClick={this.showModal}>Open</button>
-                <Modal ref="modal" modalStyle={modalStyle}>
-                    <h2>I am a dialog</h2>
-                    <button onClick={this.hideModal}>Close</button>
-                </Modal>
-            </div>
-        );
-    }
-});
+class Example extends Component {
+  showModal() {
+    this.refs.modal.show();
+  }
+
+  hideModal() {
+      this.refs.modal.hide();
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={ this.showModal }>Open</button>
+        <Modal ref={ 'modal' } modalStyle={ modalStyle }>
+          <h2>I am a dialog</h2>
+          <button onClick={ this.hideModal }>Close</button>
+        </Modal>
+      </div>
+    );
+  }
+}
+
+export default Example;
 ```
 
 Red backdrop with a blue modal, rotated at 45 degrees:
+
 ``` javascript
-var Modal = require('reboron/FlyModal');
+import React, { Component } from 'react';
+import FlyModal from 'reboron/FlyModal';
 
 // Individual styles for the modal, modal content, and backdrop
-var modalStyle = {
-    transform: 'rotate(45deg) translateX(-50%)',
+const modalStyle = {
+  transform: 'rotate(45deg) translateX(-50%)',
 };
 
-var backdropStyle = {
-    backgroundColor: 'red'
+const backdropStyle = {
+  backgroundColor: 'red'
 };
 
-var contentStyle = {
-    backgroundColor: 'blue',
-    height: '100%'
+const contentStyle = {
+  backgroundColor: 'blue',
+  height: '100%'
 };
 
-var Example = React.createClass({
-    showModal: function(){
-        this.refs.modal.show();
-    },
-    hideModal: function(){
-        this.refs.modal.hide();
-    },
-    render: function() {
-        return (
-            <div>
-                <button onClick={this.showModal}>Open</button>
-                <Modal ref="modal" modalStyle={modalStyle} backdropStyle={backdropStyle} contentStyle={contentStyle}>
-                    <h2>I am a dialog</h2>
-                    <button onClick={this.hideModal}>Close</button>
-                </Modal>
-            </div>
-        );
-    }
-});
+class Example extends Component {
+  showModal() {
+    this.refs.modal.show();
+  }
+
+  hideModal() {
+    this.refs.modal.hide();
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={ this.showModal }>Open</button>
+        <Modal ref={ 'modal' } modalStyle={ modalStyle } backdropStyle={ backdropStyle } contentStyle={ contentStyle }>
+          <h2>I am a dialog</h2>
+          <button onClick={ this.hideModal }>Close</button>
+        </Modal>
+      </div>
+    );
+  }
+}
+
+export default Example;
 ```
 
-
 ## Modals
-
 * DropModal
 * FadeModal
 * FlyModal
@@ -165,5 +168,4 @@ var Example = React.createClass({
 * WaveModal
 
 ## License
-
 Boron is [MIT licensed](./LICENSE).
