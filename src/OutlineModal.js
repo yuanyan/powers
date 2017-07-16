@@ -60,7 +60,7 @@ export default modalFactory({
   getRef: (willHidden) => {
     return 'content';
   },
-  getSharp: (willHidden) => {
+  getSharp: (willHidden, rectStyles = {}) => {
     const strokeDashLength = 1680;
     const showSharpAnimation = insertKeyframesRule({
       '0%': {
@@ -77,14 +77,14 @@ export default modalFactory({
       zIndex: '-1',
     };
     const rectStyle = appendVendorPrefix({
-      animationDuration: willHidden? '0.4s' :'0.8s',
+      animationDuration: willHidden ? '0.4s' : '0.8s',
       animationFillMode: 'forwards',
-      animationName: willHidden? hideContentAnimation: showSharpAnimation,
+      animationName: willHidden ? hideContentAnimation : showSharpAnimation,
       stroke: '#ffffff',
       strokeWidth: '2px',
       strokeDasharray: strokeDashLength,
+      ...rectStyles,
     });
-
     return (
       <div style = {sharpStyle}>
         <svg xmlns = 'http://www.w3.org/2000/svg'

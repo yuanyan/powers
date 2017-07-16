@@ -55,7 +55,7 @@ export default (animation) => {
       const backdropStyle = animation.getBackdropStyle(willHidden);
       const contentStyle = animation.getContentStyle(willHidden);
       const ref = animation.getRef(willHidden);
-      const sharp = animation.getSharp && animation.getSharp(willHidden);
+      const sharp = animation.getSharp && animation.getSharp(willHidden, this.props.rectStyle);
 
       // Apply custom style properties
       if (this.props.modalStyle) {

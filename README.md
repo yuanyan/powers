@@ -38,10 +38,10 @@ class Example extends Component {
   render() {
     return (
       <div>
-        <button onClick={ this.showModal }>Open</button>
-        <Modal ref={ 'modal' } keyboard={ this.callback }>
+        <button onClick={ () => this.showModal() }>Open</button>
+        <Modal ref={ 'modal' } keyboard={ () => this.callback() }>
           <h2>I am a dialog</h2>
-          <button onClick={ this.hideModal }>Close</button>
+          <button onClick={ () => this.hideModal() }>Close</button>
         </Modal>
       </div>
     );
@@ -58,14 +58,15 @@ export default Example;
 * closeOnClick - Close the backdrop element when clicked.
 * onShow - Show callback.
 * onHide - Hide callback. Argument is the source of the hide action, one of:
- * hide - hide() method is the cause of the hide.
- * toggle - toggle() method is the cause of the hide
- * keyboard - keyboard (escape key) is the cause of the hide
- * backdrop - backdrop click is the cause of the hide
- * [any] - custom argument passed by invoking code into the hide() method when called directly.
+  * hide - hide() method is the cause of the hide.
+  * toggle - toggle() method is the cause of the hide
+  * keyboard - keyboard (escape key) is the cause of the hide
+  * backdrop - backdrop click is the cause of the hide
+  * [any] - custom argument passed by invoking code into the hide() method when called directly.
 * modalStyle - CSS styles to apply to the modal
 * backdropStyle - CSS styles to apply to the backdrop
 * contentStyle - CSS styles to apply to the modal's content
+* rectStyle - CSS styles to apply to the modal's rectangle _(OutlineModal only)_
 
 Note: If the hide() method is called directly, a custom source string can be
 passed as the argument, as noted above. For example, this might be useful if
@@ -98,10 +99,10 @@ class Example extends Component {
   render() {
     return (
       <div>
-        <button onClick={ this.showModal }>Open</button>
+        <button onClick={ () => this.showModal() }>Open</button>
         <Modal ref={ 'modal' } modalStyle={ modalStyle }>
           <h2>I am a dialog</h2>
-          <button onClick={ this.hideModal }>Close</button>
+          <button onClick={ () => this.hideModal() }>Close</button>
         </Modal>
       </div>
     );
@@ -143,10 +144,10 @@ class Example extends Component {
   render() {
     return (
       <div>
-        <button onClick={ this.showModal }>Open</button>
+        <button onClick={ () => this.showModal() }>Open</button>
         <Modal ref={ 'modal' } modalStyle={ modalStyle } backdropStyle={ backdropStyle } contentStyle={ contentStyle }>
           <h2>I am a dialog</h2>
-          <button onClick={ this.hideModal }>Close</button>
+          <button onClick={ () => this.hideModal() }>Close</button>
         </Modal>
       </div>
     );
