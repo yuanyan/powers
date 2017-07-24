@@ -2,7 +2,7 @@ Reboron
 =====
 A collection of dialog animations with React.js.
 
-* Demo - [yuanyan.github.io/boron](http://yuanyan.github.io/boron/)
+* Demo - [https://jerairrest.github.io/reboron/](https://jerairrest.github.io/reboron/)
 
 ## About
 This is a fork of http://yuanyan.github.io/boron/ that has fixes for the deprecation warnings in React 15.*. I will be working on updating this package to use es6 as well as fixing some of the issues in the main package. PRs welcome!
@@ -166,4 +166,4 @@ export default Example;
 * WaveModal
 
 ## License
-Boron is [MIT licensed](./LICENSE).
+Reboron is [MIT licensed](./LICENSE).
