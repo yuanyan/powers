@@ -55,16 +55,7 @@ var animation = {
 
     showContentAnimation: {},
 
-    hideContentAnimation: insertKeyframesRule({
-        '0%': {
-            opacity: 1,
-            transform: 'translate(0, 0)'
-        },
-        '100%': {
-            opacity: 0,
-            transform: 'translate(0, 50px)'
-        }
-    })
+    hideContentAnimation: {}
 };
 
 var showAnimation = animation.show;
