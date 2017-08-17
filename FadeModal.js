@@ -1,26 +1,22 @@
-var React = require('react');
 var modalFactory = require('./modalFactory');
 var insertKeyframesRule = require('domkit/insertKeyframesRule');
 var appendVendorPrefix = require('domkit/appendVendorPrefix');
 
 var animation = {
     show: {
-        animationDuration: '0.8s',
-        animationTimingFunction: 'cubic-bezier(0.6,0,0.4,1)'
+        animationDuration: '0.3s',
+        animationTimingFunction: 'ease-out'
     },
     hide: {
-        animationDuration: '0.4s',
+        animationDuration: '0.3s',
         animationTimingFunction: 'ease-out'
     },
     showContentAnimation: insertKeyframesRule({
         '0%': {
-            opacity: 0,
-        },
-        '40%':{
             opacity: 0
         },
         '100%': {
-            opacity: 1,
+            opacity: 1
         }
     }),
 
@@ -29,7 +25,7 @@ var animation = {
             opacity: 1
         },
         '100%': {
-            opacity: 0,
+            opacity: 0
         }
     }),
 
@@ -63,67 +59,10 @@ module.exports = modalFactory({
     getRef: function(willHidden) {
         return 'content';
     },
-    getSharp: function(willHidden) {
-        var strokeDashLength = 1680;
-
-        var showSharpAnimation = insertKeyframesRule({
-            '0%': {
-                'stroke-dashoffset': strokeDashLength
-            },
-            '100%': {
-                'stroke-dashoffset': 0
-            },
-        });
-
-
-        var sharpStyle = {
-            position: 'absolute',
-            width: 'calc(100%)',
-            height: 'calc(100%)',
-            zIndex: '-1'
-        };
-
-        var rectStyle = appendVendorPrefix({
-            animationDuration: willHidden? '0.4s' :'0.8s',
-            animationFillMode: 'forwards',
-            animationName: willHidden? hideContentAnimation: showSharpAnimation,
-            stroke: '#ffffff',
-            strokeWidth: '2px',
-            strokeDasharray: strokeDashLength
-        });
-
-        return <div style = {sharpStyle}>
-            <svg
-                xmlns = "http://www.w3.org/2000/svg"
-                width = "100%"
-                height = "100%"
-                viewBox = "0 0 496 136"
-                preserveAspectRatio = "none">
-                <rect style={rectStyle}
-                    x = "2"
-                    y = "2"
-                    fill = "none"
-                    width = "492"
-                    height = "132" />
-            </svg>
-        </div>
-    },
-    getWrapperStyle: function() {
-        return appendVendorPrefix({
-            display: "block",
-            position: "fixed",
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            zIndex: 99999,
-            overflowY: "scroll"
-        });
-    },
     getModalStyle: function(willHidden) {
         return appendVendorPrefix({
             zIndex: 1050,
-            position: "absolute",
+            position: "fixed",
             width: "500px",
             transform: "translate3d(-50%, -50%, 0)",
             top: "50%",
@@ -140,7 +79,7 @@ module.exports = modalFactory({
             zIndex: 1040,
             backgroundColor: "#373A47",
             animationFillMode: 'forwards',
-            animationDuration: '0.4s',
+            animationDuration: '0.3s',
             animationName: willHidden ? hideBackdropAnimation : showBackdropAnimation,
             animationTimingFunction: (willHidden ? hideAnimation : showAnimation).animationTimingFunction
         });

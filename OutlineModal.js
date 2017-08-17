@@ -1,37 +1,35 @@
+var React = require('react');
 var modalFactory = require('./modalFactory');
 var insertKeyframesRule = require('domkit/insertKeyframesRule');
 var appendVendorPrefix = require('domkit/appendVendorPrefix');
 
 var animation = {
     show: {
-        animationDuration: '0.4s',
-        animationTimingFunction: 'cubic-bezier(0.7,0,0.3,1)'
+        animationDuration: '0.8s',
+        animationTimingFunction: 'cubic-bezier(0.6,0,0.4,1)'
     },
-
     hide: {
         animationDuration: '0.4s',
-        animationTimingFunction: 'cubic-bezier(0.7,0,0.3,1)'
+        animationTimingFunction: 'ease-out'
     },
-
-    showModalAnimation: insertKeyframesRule({
+    showContentAnimation: insertKeyframesRule({
         '0%': {
             opacity: 0,
-            transform: 'translate(-50%, -300px)'
+        },
+        '40%':{
+            opacity: 0
         },
         '100%': {
             opacity: 1,
-            transform: 'translate(-50%, -50%)'
         }
     }),
 
-    hideModalAnimation: insertKeyframesRule({
+    hideContentAnimation: insertKeyframesRule({
         '0%': {
-            opacity: 1,
-            transform: 'translate(-50%, -50%)'
+            opacity: 1
         },
         '100%': {
             opacity: 0,
-            transform: 'translate(-50%, 100px)'
         }
     }),
 
@@ -41,7 +39,7 @@ var animation = {
         },
         '100%': {
             opacity: 0.9
-        }
+        },
     }),
 
     hideBackdropAnimation: insertKeyframesRule({
@@ -51,43 +49,64 @@ var animation = {
         '100%': {
             opacity: 0
         }
-    }),
-
-    showContentAnimation: insertKeyframesRule({
-        '0%': {
-            opacity: 0,
-            transform: 'translate(0, -20px)'
-        },
-        '100%': {
-            opacity: 1,
-            transform: 'translate(0, 0)'
-        }
-    }),
-
-    hideContentAnimation: insertKeyframesRule({
-        '0%': {
-            opacity: 1,
-            transform: 'translate(0, 0)'
-        },
-        '100%': {
-            opacity: 0,
-            transform: 'translate(0, 50px)'
-        }
     })
 };
 
 var showAnimation = animation.show;
 var hideAnimation = animation.hide;
-var showModalAnimation = animation.showModalAnimation;
-var hideModalAnimation = animation.hideModalAnimation;
-var showBackdropAnimation = animation.showBackdropAnimation;
-var hideBackdropAnimation = animation.hideBackdropAnimation;
 var showContentAnimation = animation.showContentAnimation;
 var hideContentAnimation = animation.hideContentAnimation;
+var showBackdropAnimation = animation.showBackdropAnimation;
+var hideBackdropAnimation = animation.hideBackdropAnimation;
 
 module.exports = modalFactory({
     getRef: function(willHidden) {
-        return 'modal';
+        return 'content';
+    },
+    getSharp: function(willHidden) {
+        var strokeDashLength = 1680;
+
+        var showSharpAnimation = insertKeyframesRule({
+            '0%': {
+                'stroke-dashoffset': strokeDashLength
+            },
+            '100%': {
+                'stroke-dashoffset': 0
+            },
+        });
+
+
+        var sharpStyle = {
+            position: 'absolute',
+            width: 'calc(100%)',
+            height: 'calc(100%)',
+            zIndex: '-1'
+        };
+
+        var rectStyle = appendVendorPrefix({
+            animationDuration: willHidden? '0.4s' :'0.8s',
+            animationFillMode: 'forwards',
+            animationName: willHidden? hideContentAnimation: showSharpAnimation,
+            stroke: '#ffffff',
+            strokeWidth: '2px',
+            strokeDasharray: strokeDashLength
+        });
+
+        return React.createElement("div", {style: sharpStyle}, 
+            React.createElement("svg", {
+                xmlns: "http://www.w3.org/2000/svg", 
+                width: "100%", 
+                height: "100%", 
+                viewBox: "0 0 496 136", 
+                preserveAspectRatio: "none"}, 
+                React.createElement("rect", {style: rectStyle, 
+                    x: "2", 
+                    y: "2", 
+                    fill: "none", 
+                    width: "492", 
+                    height: "132"})
+            )
+        )
     },
     getWrapperStyle: function() {
         return appendVendorPrefix({
@@ -103,17 +122,12 @@ module.exports = modalFactory({
     },
     getModalStyle: function(willHidden) {
         return appendVendorPrefix({
+            zIndex: 1050,
             position: "absolute",
             width: "500px",
-            transform: "translate(-50%, -50%)",
+            transform: "translate3d(-50%, -50%, 0)",
             top: "50%",
-            left: "50%",
-            backgroundColor: "white",
-            zIndex: 1050,
-            animationDuration: (willHidden ? hideAnimation : showAnimation).animationDuration,
-            animationFillMode: 'forwards',
-            animationName: willHidden ? hideModalAnimation : showModalAnimation,
-            animationTimingFunction: (willHidden ? hideAnimation : showAnimation).animationTimingFunction
+            left: "50%"
         })
     },
     getBackdropStyle: function(willHidden) {
@@ -125,8 +139,8 @@ module.exports = modalFactory({
             left: 0,
             zIndex: 1040,
             backgroundColor: "#373A47",
-            animationDuration: (willHidden ? hideAnimation : showAnimation).animationDuration,
             animationFillMode: 'forwards',
+            animationDuration: '0.4s',
             animationName: willHidden ? hideBackdropAnimation : showBackdropAnimation,
             animationTimingFunction: (willHidden ? hideAnimation : showAnimation).animationTimingFunction
         });
@@ -134,11 +148,10 @@ module.exports = modalFactory({
     getContentStyle: function(willHidden) {
         return appendVendorPrefix({
             margin: 0,
-            opacity: 0,
+            backgroundColor: "white",
             animationDuration: (willHidden ? hideAnimation : showAnimation).animationDuration,
             animationFillMode: 'forwards',
-            animationDelay: '0.25s',
-            animationName: showContentAnimation,
+            animationName: willHidden ? hideContentAnimation : showContentAnimation,
             animationTimingFunction: (willHidden ? hideAnimation : showAnimation).animationTimingFunction
         })
     }
