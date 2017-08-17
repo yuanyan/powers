@@ -71,9 +71,21 @@ module.exports = modalFactory({
     getRef: function(willHidden) {
         return 'modal';
     },
+    getWrapperStyle: function() {
+        return appendVendorPrefix({
+            display: "block",
+            position: "fixed",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 99999,
+            overflowY: "scroll"
+        });
+    },
     getModalStyle: function(willHidden) {
         return appendVendorPrefix({
-            position: "fixed",
+            position: "absolute",
             width: "500px",
             transform: "translate(-50%, -50%)",
             top: "50%",
