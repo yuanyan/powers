@@ -53,9 +53,27 @@ var animation = {
         }
     }),
 
-    showContentAnimation: {},
+    showContentAnimation: insertKeyframesRule({
+        '0%': {
+            opacity: 0,
+            transform: 'translate(0, -20px)'
+        },
+        '100%': {
+            opacity: 1,
+            transform: 'translate(0, 0)'
+        }
+    }),
 
-    hideContentAnimation: {}
+    hideContentAnimation: insertKeyframesRule({
+        '0%': {
+            opacity: 1,
+            transform: 'translate(0, 0)'
+        },
+        '100%': {
+            opacity: 0,
+            transform: 'translate(0, 50px)'
+        }
+    })
 };
 
 var showAnimation = animation.show;
