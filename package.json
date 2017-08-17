@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/josuemontano/boron.git"
+    "url": "https://github.com/yuanyan/boron.git"
   },
   "dependencies": {
     "domkit": "^0.0.1"
