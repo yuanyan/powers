@@ -17,6 +17,7 @@ module.exports = function(animation){
             modalStyle: React.PropTypes.object,
             backdropStyle: React.PropTypes.object,
             contentStyle: React.PropTypes.object,
+            wrapperStyle: React.PropTypes.object,
         },
 
         getDefaultProps: function() {
@@ -31,6 +32,7 @@ module.exports = function(animation){
                 modalStyle: {},
                 backdropStyle: {},
                 contentStyle: {},
+                wrapperStyle: {},
             };
         },
 
@@ -74,6 +76,7 @@ module.exports = function(animation){
             var modalStyle = animation.getModalStyle(willHidden);
             var backdropStyle = animation.getBackdropStyle(willHidden);
             var contentStyle = animation.getContentStyle(willHidden);
+            var wrapperStyle = animation.getWrapperStyle();
             var ref = animation.getRef(willHidden);
             var sharp = animation.getSharp && animation.getSharp(willHidden);
 
@@ -99,6 +102,13 @@ module.exports = function(animation){
                 }
             }
 
+            if (this.props.wrapperStyle) {
+              var prefixedWrapperStyle = appendVendorPrefix(this.props.wrapperStyle);
+                for (var style in prefixedWrapperStyle) {
+                    wrapperStyle[style] = prefixedWrapperStyle[style];
+                }
+            }
+
             var backdrop = this.props.backdrop? <div style={backdropStyle} onClick={this.props.closeOnClick? this.handleBackdropClick: null} />: undefined;
 
             if(willHidden) {
@@ -106,7 +116,7 @@ module.exports = function(animation){
                 this.addTransitionListener(node, this.leave);
             }
 
-            return (<span>
+            return (<span style={wrapperStyle}>
                 <div ref="modal" style={modalStyle} className={this.props.className}>
                     {sharp}
                     <div ref="content" tabIndex="-1" style={contentStyle}>
