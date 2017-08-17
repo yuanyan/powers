@@ -108,10 +108,22 @@ module.exports = modalFactory({
             </svg>
         </div>
     },
+    getWrapperStyle: function() {
+        return appendVendorPrefix({
+            display: "block",
+            position: "fixed",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 99999,
+            overflowY: "scroll"
+        });
+    },
     getModalStyle: function(willHidden) {
         return appendVendorPrefix({
             zIndex: 1050,
-            position: "fixed",
+            position: "absolute",
             width: "500px",
             transform: "translate3d(-50%, -50%, 0)",
             top: "50%",
