@@ -58,6 +58,24 @@ module.exports = function(animation){
             }
         },
 
+        normalizeTransformMatrix: function(){
+            var mx = window.getComputedStyle(this.refs.modal, null);
+            mx = mx.getPropertyValue("-webkit-transform") ||
+                 mx.getPropertyValue("-moz-transform") ||
+                 mx.getPropertyValue("-ms-transform") ||
+                 mx.getPropertyValue("-o-transform") ||
+                 mx.getPropertyValue("transform") || false;
+
+            var values = mx.replace(/ |\(|\)|matrix/g, "").split(",");
+            for (var v in values) { 
+                values[v] = v > 4 ? Math.ceil(values[v]) : values[v];
+            }
+
+            if (this.refs.modal) {
+                this.refs.modal.style.transform = "matrix(" + values.join() + ")";
+            }
+        },
+
         handleBackdropClick: function() {
             if (this.props.closeOnClick) {
                 this.hide("backdrop");
@@ -141,6 +159,7 @@ module.exports = function(animation){
               var ref = this.props.animation.getRef();
               var node = this.refs[ref];
               this.addTransitionListener(node, this.enter);
+              this.addTransitionListener(node, this.normalizeTransformMatrix);
             }.bind(this), 0);
         },
 
