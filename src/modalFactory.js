@@ -59,20 +59,22 @@ module.exports = function(animation){
         },
 
         normalizeTransformMatrix: function(){
-            var mx = window.getComputedStyle(this.refs.modal, null);
-            mx = mx.getPropertyValue("-webkit-transform") ||
-                 mx.getPropertyValue("-moz-transform") ||
-                 mx.getPropertyValue("-ms-transform") ||
-                 mx.getPropertyValue("-o-transform") ||
-                 mx.getPropertyValue("transform") || false;
-
-            var values = mx.replace(/ |\(|\)|matrix/g, "").split(",");
-            for (var v in values) { 
-                values[v] = v > 4 ? Math.ceil(values[v]) : values[v];
-            }
-
             if (this.refs.modal) {
-                this.refs.modal.style.transform = "matrix(" + values.join() + ")";
+                var mx = window.getComputedStyle(this.refs.modal, null);
+                mx = mx.getPropertyValue("-webkit-transform") ||
+                     mx.getPropertyValue("-moz-transform") ||
+                     mx.getPropertyValue("-ms-transform") ||
+                     mx.getPropertyValue("-o-transform") ||
+                     mx.getPropertyValue("transform") || false;
+
+                if (mx) {
+                    var values = mx.replace(/ |\(|\)|matrix/g, "").split(",");
+                    for (var v in values) { 
+                        values[v] = v > 4 ? Math.ceil(values[v]) : values[v];
+                    }
+
+                    this.refs.modal.style.transform = "matrix(" + values.join() + ")";
+                }
             }
         },
 
