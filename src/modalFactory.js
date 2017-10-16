@@ -41,7 +41,7 @@ export default (animation) => {
 
     handleBackdropClick() {
       if (this.props.closeOnClick) {
-        this.hide();
+        this.hide('backdrop');
       }
     };
 
@@ -103,7 +103,7 @@ export default (animation) => {
       this.setState({
           hidden: true
       });
-      this.props.onHide();
+      this.props.onHide(this.state.hideSource);
     };
 
     enter() {
@@ -125,10 +125,13 @@ export default (animation) => {
       }.bind(this), 0);
     };
 
-    hide() {
-      if (this.hasHidden()) return;
+    hide(source) {
+      if (this.hasHidden()) {
+          return;
+      }
 
       this.setState({
+        hideSource: source || 'hide',
         willHidden: true
       });
     };
@@ -137,7 +140,7 @@ export default (animation) => {
       if (this.hasHidden()) {
         this.show();
       } else {
-        this.hide();
+        this.hide('toggle');
       }
     };
 
@@ -145,7 +148,7 @@ export default (animation) => {
       if (this.props.keyboard &&
          (event.key === 'Escape' ||
           event.keyCode === 27)) {
-          this.hide();
+          this.hide('keyboard');
       }
     };
 

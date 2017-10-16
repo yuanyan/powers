@@ -1,6 +1,6 @@
 {
   "name": "reboron",
-  "version": "0.4.2",
+  "version": "0.4.5",
   "description": "A collection of dialog animations with React.js",
   "main": "Boron.js",
   "author": "Jeremy Ayerst",
