@@ -37,7 +37,9 @@
     "vinyl-paths": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^2.1.1",
-    "gulp-react": "^3.0.1"
+    "gulp-react": "^3.0.1",
+    "prop-types": "^15.6.1",
+    "create-react-class": "^15.6.3"
   },
   "browserify": {
     "transform": [

@@ -1,22 +1,24 @@
 var React = require('react');
+var PropTypes = require('prop-types');
 var transitionEvents = require('domkit/transitionEvents');
 var appendVendorPrefix = require('domkit/appendVendorPrefix');
+var createReactClass = require('create-react-class');
 
 module.exports = function(animation){
 
-    return React.createClass({
+    return createReactClass({
         propTypes: {
-            className: React.PropTypes.string,
+            className: PropTypes.string,
             // Close the modal when esc is pressed? Defaults to true.
-            keyboard: React.PropTypes.bool,
-            onShow: React.PropTypes.func,
-            onHide: React.PropTypes.func,
-            animation: React.PropTypes.object,
-            backdrop: React.PropTypes.bool,
-            closeOnClick: React.PropTypes.bool,
-            modalStyle: React.PropTypes.object,
-            backdropStyle: React.PropTypes.object,
-            contentStyle: React.PropTypes.object,
+            keyboard: PropTypes.bool,
+            onShow: PropTypes.func,
+            onHide: PropTypes.func,
+            animation: PropTypes.object,
+            backdrop: PropTypes.bool,
+            closeOnClick: PropTypes.bool,
+            modalStyle: PropTypes.object,
+            backdropStyle: PropTypes.object,
+            contentStyle: PropTypes.object,
         },
 
         getDefaultProps: function() {
