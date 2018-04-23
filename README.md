@@ -56,12 +56,14 @@ export default Example;
 * keyboard - Receive a callback function or a boolean to choose to close the modal when escape key is pressed.
 * backdrop - Includes a backdrop element.
 * closeOnClick - Close the backdrop element when clicked.
+* duration - duration in milliseconds before the modal is hidden
 * onShow - Show callback.
 * onHide - Hide callback. Argument is the source of the hide action, one of:
   * hide - hide() method is the cause of the hide.
   * toggle - toggle() method is the cause of the hide
   * keyboard - keyboard (escape key) is the cause of the hide
   * backdrop - backdrop click is the cause of the hide
+  * timeout - timeout is the cause of the hide
   * [any] - custom argument passed by invoking code into the hide() method when called directly.
 * modalStyle - CSS styles to apply to the modal
 * backdropStyle - CSS styles to apply to the backdrop

@@ -107,6 +107,9 @@ export default (animation) => {
     };
 
     enter() {
+      if (this.props.duration >= 0)
+        setTimeout(() => this.hide("timeout"), parseInt(this.props.duration));
+
       this.props.onShow();
     };
 
@@ -164,6 +167,7 @@ export default (animation) => {
   Factory.propTypes = {
     className: PropTypes.string,
     keyboard: PropTypes.bool,
+    duration: PropTypes.number,
     onShow: PropTypes.func,
     onHide: PropTypes.func,
     animation: PropTypes.object,
@@ -176,6 +180,7 @@ export default (animation) => {
 
   Factory.defaultProps = {
     className: '',
+    duration: -1,
     onShow: function(){},
     onHide: function(){},
     animation: animation,
