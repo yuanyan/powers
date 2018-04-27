@@ -1,9 +1,9 @@
-Boron  [![npm version](https://badge.fury.io/js/boron.svg)](http://badge.fury.io/js/boron)
+Boron (React 15+)  [![npm version](https://badge.fury.io/js/boron.svg)](http://badge.fury.io/js/boron-15)
 =====
 
 A collection of dialog animations with React.js.
 
-* React 15+ support
+This is the fork of [boron](https://github.com/yuanyan/boron) that provides **React 15+ support**
 
 ## Demo & Examples
 
