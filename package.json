@@ -1,9 +1,9 @@
 {
-  "name": "boron",
+  "name": "boron-15",
   "version": "0.2.4",
-  "description": "A collection of dialog animations with React.js",
+  "description": "A collection of dialog animations for React 15+",
   "main": "Boron.js",
-  "author": "Yuanyan Cao",
+  "author": "Maxim Mazurok <maxim@mazurok.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
