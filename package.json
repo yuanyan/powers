@@ -1,6 +1,6 @@
 {
   "name": "boron-15",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "A collection of dialog animations for React 15+",
   "main": "Boron.js",
   "author": "Maxim Mazurok <maxim@mazurok.com>",
