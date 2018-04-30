@@ -101,22 +101,22 @@ module.exports = function(animation){
                 }
             }
 
-            var backdrop = this.props.backdrop? <div style={backdropStyle} onClick={this.props.closeOnClick? this.handleBackdropClick: null} />: undefined;
+            var backdrop = this.props.backdrop? React.createElement("div", {style: backdropStyle, onClick: this.props.closeOnClick? this.handleBackdropClick: null}): undefined;
 
             if(willHidden) {
                 var node = this.refs[ref];
                 this.addTransitionListener(node, this.leave);
             }
 
-            return (<span>
-                <div ref="modal" style={modalStyle} className={this.props.className}>
-                    {sharp}
-                    <div ref="content" tabIndex="-1" style={contentStyle}>
-                        {this.props.children}
-                    </div>
-                </div>
-                {backdrop}
-             </span>)
+            return (React.createElement("span", null, 
+                React.createElement("div", {ref: "modal", style: modalStyle, className: this.props.className}, 
+                    sharp, 
+                    React.createElement("div", {ref: "content", tabIndex: "-1", style: contentStyle}, 
+                        this.props.children
+                    )
+                ), 
+                backdrop
+             ))
             ;
         },
 

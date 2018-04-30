@@ -1,9 +1,9 @@
 {
-  "name": "boron",
-  "version": "0.2.4",
-  "description": "A collection of dialog animations with React.js",
+  "name": "boron-15",
+  "version": "0.3.3",
+  "description": "A collection of dialog animations for React 15+",
   "main": "Boron.js",
-  "author": "Yuanyan Cao",
+  "author": "Maxim Mazurok <maxim@mazurok.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -37,7 +37,9 @@
     "vinyl-paths": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^2.1.1",
-    "gulp-react": "^3.0.1"
+    "gulp-react": "^3.0.1",
+    "prop-types": "^15.6.1",
+    "create-react-class": "^15.6.3"
   },
   "browserify": {
     "transform": [
